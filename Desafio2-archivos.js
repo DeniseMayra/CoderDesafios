@@ -8,12 +8,18 @@ class container {
 
     async save(obj){
         try{
-            const jsonData = await fs.promises.readFile(this.name, 'utf-8')
-            this.content = JSON.parse(jsonData)
-            const newObj = {...obj, id: this.content.length+1}
-            this.content.push(newObj)
-            await fs.promises.writeFile(this.name, JSON.stringify(this.content))
-            return newObj.id
+            if(fs.existsSync(this.name)){
+                const jsonData = await fs.promises.readFile(this.name, 'utf-8')
+                this.content = JSON.parse(jsonData)
+                const newObj = {...obj, id: this.content[this.content.length - 1].id + 1}
+                this.content.push(newObj)
+                await fs.promises.writeFile(this.name, JSON.stringify(this.content))
+                return newObj.id
+            }else{
+                obj.id=1
+                await fs.promises.writeFile(this.name, JSON.stringify([obj]), null, 2)
+                return obj.id
+            }
         }
         catch(err){ console.log(err)}
     }
@@ -60,14 +66,16 @@ class container {
     } 
 }
 
-const products = new container("products.txt")
+module.exports = {container}
+
+// const products = new container("products.txt")
 
 // const object = {
 //     title: "iphone 12 pro",
 //     price: 1000
 // }
 // products.save(object)  
-//  const object2 ={
+// const object2 ={
 //     title: "iphone 12",
 //     price: 900
 // }
@@ -78,14 +86,14 @@ const products = new container("products.txt")
 // }
 // products.save(object3)  
 
-const getall = products.getAll()
-const getbyid = products.getById(2)
+// const getall = products.getAll()
+// const getbyid = products.getById(2)
 
-setTimeout(() => {
-    console.log(getall)
-    console.log(getbyid)
+// setTimeout(() => {
+//     console.log(getall)
+//     console.log(getbyid)
     
-}, 700);
+// }, 700);
 
 // products.deleteById(2)
 // products.deleteAll()
