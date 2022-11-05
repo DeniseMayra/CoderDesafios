@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Cuatro</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Desafio número Cuatro</h1>
+    
+    <form action="/api/productos" method="POST">
+        <fieldset class="fieldset">
+            <legend> Ingrese la información </legend>
+            <input type="text" name="title" id="" placeholder="ingrese nombre del producto">
+            <input type="text" name="price" id="" placeholder="ingrese precio">
+            <input type="text" name="thumbnail" id="" placeholder="ingrese url a la foto">
+            <button>Enviar</button>
+        </fieldset>
+    </form>
+
+    <div>
+        <h3>Actualizar producto</h3>
+        <div id="updateContainer" style="margin-top: 20px ;">
+            <input id="prodId" type="number" placeholder="Ingrese Id del producto">
+            <button id="findButton">Buscar</button>
+        </div>
+    </div>
+
+    <!-- <form action="/api/productos/:id" method="PUT">
+        <fieldset>
+            <legend> Actualizar producto </legend>
+            <input type="text" name="title" id="" placeholder="Actualizar nombre del producto">
+            <input type="text" name="price" id="" placeholder="Actualizar precio">
+            <input type="text" name="thumbnail" id="" placeholder="Actualizar url a la foto">
+            <button>Actualizar</button>
+        </fieldset>
+    </form> -->
+</body>
+</html>
+
+<script>
+    const findButton = document.getElementById('findButton')
+    const updateContainer = document.getElementById('updateContainer')
+    findButton.addEventListener('click', () => {
+        const prodId = document.getElementById('prodId')
+        updateContainer.innerHTML = `
+        <form action="/api/productos/${prodId.value}" method="PUT">
+            <fieldset class="fieldset">
+                <legend > Actualizar producto </legend>
+                <input type="text" name="title" id="" placeholder="Actualizar nombre del producto">
+                <input type="text" name="price" id="" placeholder="Actualizar precio">
+                <input type="text" name="thumbnail" id="" placeholder="Actualizar url a la foto">
+                <button>Actualizar</button>
+            </fieldset>
+        </form>
+        `
+    })
+    
+</script>

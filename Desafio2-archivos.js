@@ -64,6 +64,18 @@ class container {
         }
         catch(error){console.log(error)}
     } 
+
+    async updateById(obj){
+        try{
+            const numId = parseInt(obj.id)
+            const dataJson = await fs.promises.readFile(this.name, 'utf-8')
+            const data = JSON.parse(dataJson)
+            this.content = data.filter((prod) => prod.id != numId)
+            this.content.push({...obj, id: numId})
+            fs.promises.writeFile(this.name, JSON.stringify(this.content))
+        }
+        catch(error){console.log(error)}
+    }
 }
 
 module.exports = {container}
