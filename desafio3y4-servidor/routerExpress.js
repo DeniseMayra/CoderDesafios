@@ -15,12 +15,16 @@ routerProducts.get('/:id', async(req,res) => {
     const prodId = await products.getById(req.params.id)
     if (prodId != null){
         res.json(prodId)
-    } else {res.send("error: producto no encontrado")}
+    } else {
+        res.status(404)
+        res.send("error: producto no encontrado")
+    }
 })
 routerProducts.post('/', async(req,res) => {
     // recibe y agrega un prod, devuelve el id
     const newProd = {...req.body}
     const prodId = await products.save(newProd) 
+    res.status(201)
     res.json(prodId)
 })
 routerProducts.put('/:id', (req,res) => {

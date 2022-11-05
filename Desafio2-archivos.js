@@ -1,4 +1,4 @@
-
+const {randomUUID} = require("crypto")
 const fs = require('fs')
 class container {
     constructor(fileName){
@@ -11,7 +11,8 @@ class container {
             if(fs.existsSync(this.name)){
                 const jsonData = await fs.promises.readFile(this.name, 'utf-8')
                 this.content = JSON.parse(jsonData)
-                const newObj = {...obj, id: this.content[this.content.length - 1].id + 1}
+                // const newObj = {...obj, id: this.content[this.content.length - 1].id + 1}
+                const newObj = {...obj, id: randomUUID()}
                 this.content.push(newObj)
                 await fs.promises.writeFile(this.name, JSON.stringify(this.content))
                 return newObj.id
