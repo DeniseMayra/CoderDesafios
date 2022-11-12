@@ -1,0 +1,34 @@
+<a class="btn btn-outline-secondary linkButton" href="/">Ir a lista de productos</a>
+
+<h1 style="margin: 20px 0px 30px 20px;">Lista de Productos </h1>
+
+{{#if haveProd }}
+
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre </th>
+            <th scope="col">Precio </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each products}}
+
+        <tr>
+            <th scope="row">1</th>
+            <td> {{this.title}} </td>
+            <td> {{this.price}} </td>
+        </tr>
+        {{/each }}
+    </tbody> 
+</table>
+
+{{else}} 
+
+<div class="alert alert-secondary" role="alert">
+    No se encontraron Prodcutos
+</div>
+
+{{/if}} 
