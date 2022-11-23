@@ -1,4 +1,4 @@
-const {conectServer} = require('./server')
+const {conectServer} = require('./socketServer') 
 
 async function main(){
     try{
@@ -10,6 +10,3 @@ async function main(){
 }
 
 main()
-
-
-

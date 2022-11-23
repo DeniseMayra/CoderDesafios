@@ -1,5 +1,5 @@
 const {Router} = require('express')
-const {container} =require('../Desafio2-archivos')
+const {container} =require('../../Desafio2-archivos')
 
 const productsClass = new container("productsD3.txt")
 
@@ -12,6 +12,7 @@ routerProducts.get('/', async(req,res) => {
     if(products.lenght != 0){
         haveProd = true
     }
+    // renderiza plantilla list de handlebars, pasando por parametro los valores que se utilizaran en la plantilla
     res.render('list', {haveProd, products})
 })
 routerProducts.get('/:id', async(req,res) => {

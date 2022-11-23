@@ -11,7 +11,7 @@ const hbsConfig = {
 }
 app.engine('hbs', engine(hbsConfig))
 app.set('view engine', 'hbs')
-app.set('views', './views')
+app.set('views', '../views')
 
 // ------------- ROUTES ------------
 app.use(express.json())
@@ -22,7 +22,8 @@ app.use(express.urlencoded({extended: true}))
 //     res.sendFile('../style.css')
 // })
 app.get('/', (req, res) => {
-    res.render('form')
+    // renderiza plantilla form de handlebars
+    res.render('form') 
 })
 app.use('/api/productos', routerProducts)
 

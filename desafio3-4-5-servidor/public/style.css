@@ -4,13 +4,14 @@
 }
 
 body {
-    margin: 40px 90px;
+    padding: 40px 90px;
 }
 h1 {
     margin-bottom: 20px;
 }
-form{
+.form{
     margin-bottom: 30px;
+    padding: 10px 20px;
 }
 .fieldset{
     display: flex;
@@ -23,21 +24,54 @@ form{
     background-color: #f2f2f2;
     border: 1px solid #dcdcdc;
 }
-legend{
+.legend{
     font-size: 20px;
     margin-left: 30px;
 }
-input{
+.input{
     width: 500px;
     height: 30px;
     border: none;
     border-bottom: 2px solid #9999A1;
     background: transparent;
 }
-button{
-    width: 100px;
+.button{
+    width: 200px;
+    border-radius: 80px;
+    border: 1px solid #525252;
+    background-color: #dbdbdb;
 }
 
 .linkPagina{
     right: 90px;
+}
+#chat{
+    padding: 15px auto ;
+    width: 600px;
+}
+
+#messageBox{
+    height: 600px;
+    width: 100%;
+    margin: 10px 0;
+}
+.line{
+    display: flex;
+    flex-direction: row;
+}
+.userEmail{
+    color: rgb(18, 18, 125);
+    width: 100px;
+    margin-right: 15px;
+}
+.userDate{
+    color: rgb(102, 18, 18);
+    width: 150px;
+    font-size: 12px;
+    margin-right: 15px;
+}
+.userMsg{
+    color: black;
+    font-family: italic;
+    width: auto;
 }
