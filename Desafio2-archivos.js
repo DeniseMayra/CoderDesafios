@@ -1,5 +1,6 @@
-const {randomUUID} = require("crypto")
-const fs = require('fs')
+import {randomUUID} from "crypto"
+import fs from 'fs'
+
 class container {
     constructor(fileName){
         this.name = fileName,
@@ -79,7 +80,7 @@ class container {
     }
 }
 
-module.exports = {container}
+export default container
 
 // const products = new container("products.txt")
 

@@ -1,4 +1,4 @@
-const {conectServer} = require('./socketServer') 
+import conectServer from './socketServer.js'
 
 async function main(){
     try{

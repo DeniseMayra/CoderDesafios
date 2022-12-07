@@ -1,4 +1,4 @@
-const {conectServer} = require('./server') 
+import conectServer from './server.js'
 
 async function main(){
     try{

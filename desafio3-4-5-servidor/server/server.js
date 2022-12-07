@@ -1,6 +1,8 @@
-const express = require('express')
-const routerProducts = require('./routerExpress')
-const {engine} = require('express-handlebars')
+import express from 'express'
+import routerProducts from './routerExpress.js'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import {engine} from 'express-handlebars'
 
 const app = express()
 
@@ -11,7 +13,11 @@ const hbsConfig = {
 }
 app.engine('hbs', engine(hbsConfig))
 app.set('view engine', 'hbs')
-app.set('views', '../views')
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename)
+
+app.set('views', path.join(__dirname, '../views'))
 
 // ------------- ROUTES ------------
 app.use(express.json())
@@ -37,4 +43,4 @@ function conectServer(port = 0){
     })
 }
 
-module.exports = {conectServer}
+export default conectServer
